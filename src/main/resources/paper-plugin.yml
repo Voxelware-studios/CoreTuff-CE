@@ -135,6 +135,28 @@ commands:
     usage: "/gmsp [player]"
     permission: coretuff.gamemode.gmsp
 
+  # Time
+
+  day:
+    description: Set time to day
+    usage: "/day"
+    permission: coretuff.time.day
+  noon:
+    description: Set time to noon
+    usage: "/noon"
+    permission: coretuff.time.noon
+  sunset:
+    description: Set time to sunset
+    usage: "/sunset"
+    permission: coretuff.time.sunset
+  night:
+    description: Set time to night
+    usage: "/night"
+    permission: coretuff.time.night
+  midnight:
+    description: Set time to midnight
+    usage: "/midnight"
+    permission: coretuff.time.midnight
 
   # Utility
 
@@ -379,6 +401,29 @@ permissions:
     default: op
 
   coretuff.gamemode.gmsp.others:
+    default: op
+
+  # Time
+
+  coretuff.time:
+    default: op
+    children:
+      coretuff.time.day: true
+      coretuff.time.noon: true
+      coretuff.time.sunset: true
+      coretuff.time.night: true
+      coretuff.time.midnight: true
+
+  coretuff.time.day:
+    default: op
+
+  coretuff.time.noon:
+    default: op
+
+  coretuff.time.night:
+    default: op
+
+  coretuff.time.midnight:
     default: op
 
   # Utility
