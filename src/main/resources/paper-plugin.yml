@@ -1,0 +1,583 @@
+name: CoreTuff-CE
+version: ${version}
+main: org.voxelware.coretuff.CoreTuff
+api-version: '26.2'
+authors: [Voxelware Studios]
+website: https://voxelware.org/
+
+loader: org.voxelware.coretuff.dependencyresolver
+
+folia-supported: true
+
+description: CoreTuff Community Edition - A complete Minecraft server utility plugin.
+
+dependencies:
+
+  bootstrap:
+    - com.h2database:h2:2.4.240
+    - org.spongepowered:configurate-yaml:4.1.2
+    - org.projectlombok:lombok:1.18.46
+
+  server:
+    Vault:
+      load: BEFORE
+      required: false
+    PlaceholderAPI:
+      load: BEFORE
+      required: false
+    ProtocolLib:
+     load: BEFORE
+     required: false
+    packetevents:
+      load: BEFORE
+      required: false
+
+
+commands:
+
+  coretuff:
+    description: CoreTuff admin command
+    aliases: [ct]
+
+  home:
+    description: Teleport to a home
+    usage: "/home <home>"
+    permission: coretuff.land.home
+
+  sethome:
+    description: Set a home
+    usage: "/sethome <home>"
+    permission: coretuff.land.sethome
+
+  delhome:
+    description: Delete a home
+    usage: "/delhome <home>"
+    permission: coretuff.land.delhome
+
+  # Warps
+
+  warp:
+    description: Teleport to a warp
+    usage: "/warp <name> [player]"
+    permission: coretuff.land.warps.warp
+
+  setwarp:
+    description: Create or update a warp
+    usage: "/setwarp <name> [description]"
+    permission: coretuff.land.warps.setwarp
+
+  delwarp:
+    description: Delete a warp
+    usage: "/delwarp <name>"
+    permission: coretuff.land.warps.delwarp
+
+  warps:
+    description: List all warps
+    usage: "/warps [page]"
+    permission: coretuff.land.warps.list
+
+  # Moderation
+
+  ban:
+    description: Permanently ban a player
+    usage: "/ban <player> <reason>"
+    permission: coretuff.moderation.ban
+
+  tempban:
+    description: Temporarily ban a player
+    usage: "/tempban <player> <duration> <reason>"
+    permission: coretuff.moderation.tempban
+
+  ban-ip:
+    description: Ban a player's IP address
+    usage: "/ban-ip <player/ip> <reason>"
+    permission: coretuff.moderation.banip
+
+  pardon:
+    description: Pardon a punishment
+    usage: "/pardon <player>"
+    permission: coretuff.moderation.pardon
+
+  kick:
+    description: Kick a player
+    usage: "/kick <player> <reason>"
+    permission: coretuff.moderation.kick
+
+  warn:
+    description: Warn a player
+    usage: "/warn <player> <low|medium|high> <reason>"
+    permission: coretuff.moderation.warn
+
+  pid:
+    description: Punishment ID management
+    usage: "/pid [view|pardon]"
+    permission: coretuff.moderation.pid
+
+  # Gamemode
+
+  gmc:
+    description: Set creative mode
+    usage: "/gmc [player]"
+    permission: coretuff.gamemode.gmc
+
+  gms:
+    description: Set survival mode
+    usage: "/gms [player]"
+    permission: coretuff.gamemode.gms
+
+  gma:
+    description: Set adventure mode
+    usage: "/gma [player]"
+    permission: coretuff.gamemode.gma
+
+  gmsp:
+    description: Set spectator mode
+    usage: "/gmsp [player]"
+    permission: coretuff.gamemode.gmsp
+
+
+  # Utility
+
+  fly:
+    description: Toggle flight
+    usage: "/fly [player]"
+    permission: coretuff.utility.fly
+
+  heal:
+    description: Heal yourself or others
+    usage: "/heal [player]"
+    permission: coretuff.utility.heal
+
+  feed:
+    description: Feed yourself or others
+    usage: "/feed [player]"
+    permission: coretuff.utility.feed
+
+  hat:
+    description: Wear held item as hat
+    usage: "/hat"
+    permission: coretuff.utility.hat
+
+  anvil:
+    description: To open anvil UI
+    usage: "/anvil"
+    permission: coretuff.utility.anvil
+
+  stonecutter:
+    description: To open Stone Cutter UI
+    usage: "/stonecutter"
+    permission: coretuff.utility.stonecutter
+
+  smithing:
+    description: To open Smithing Table menu
+    usage: "/crafting"
+    permission: coretuff.utility.smithingtable
+
+  loom:
+    description: To open loom menu
+    usage: "/loom"
+    permission: coretuff.utility.loom
+
+  cartography:
+    description: To open Cartogtaphy menu
+    usage: "/cartography"
+    permission: coretuff.utility.cartographytable
+
+  enchanting:
+    description: To open Enchanting Table menu
+    usage: "/enchanting"
+    permission: coretuff.utility.enchantingtable
+
+  grindstone:
+    description: To open Grindstone menu
+    usage: "/grindstone"
+    permission: coretuff.utility.grindstone
+
+  crafting:
+    description: To open 3x3 Crafting menu
+    usage: "/crafting"
+    permission: coretuff.utility.craftingtable
+
+  # Teleportation
+
+  tpa:
+    description: Send teleport request
+    usage: "/tpa <player>"
+    permission: coretuff.teleportation.tpask
+
+  tphere:
+    description: Request someone to teleport to you
+    usage: "/tphere <player>"
+    permission: coretuff.teleportation.tphere
+
+  tpaccept:
+    description: Accept teleport request
+    usage: "/tpaccept"
+    permission: coretuff.teleportation.tpaccept
+
+  tpdeny:
+    description: Deny teleport request
+    usage: "/tpdeny"
+    permission: coretuff.teleportation.tpdeny
+
+  rtp:
+    description: Random teleport
+    usage: "/rtp [world]"
+    permission: coretuff.teleportation.rtp
+
+  back:
+    description: Teleport back
+    usage: "/back"
+    permission: coretuff.teleportation.back
+
+  tpignore:
+    description: Ignore teleport requests
+    usage: "/tpignore <player>"
+    permission: coretuff.teleportation.tpignore
+
+  # Moderation - Jail
+
+  jail:
+    description: Jail a player
+    usage: "/jail <name> [player]"
+    permission: coretuff.moderation.jail.jail
+
+  setjail:
+    description: Create or update a jail location
+    usage: "/setjail <name>"
+    permission: coretuff.moderation.jail.setjail
+
+  deljail:
+    description: Delete a jail
+    usage: "/deljail <name>"
+    permission: coretuff.moderation.jail.deljail
+
+  jails:
+    description: List all jails
+    usage: "/jails"
+    permission: coretuff.moderation.jail.list
+
+  # Utility - Kits
+
+  kit:
+    description: Redeem a kit
+    usage: "/kit <name> [player]"
+    permission: coretuff.utility.kit
+
+  kits:
+    description: List available kits
+    usage: "/kits"
+    permission: coretuff.utility.kit.list
+
+  # Economy
+
+  balance:
+    description: Check your balance
+    usage: "/balance [player]"
+    permission: coretuff.economy.balance
+
+  pay:
+    description: Pay another player
+    usage: "/pay <player> <amount>"
+    permission: coretuff.economy.pay
+
+  eco:
+    description: Admin economy management
+    usage: "/eco <give|take|set|reset> <player> <amount>"
+    permission: coretuff.economy.admin
+
+  tpunignore:
+    description: Unignore teleport requests
+    usage: "/tpunignore <player>"
+    permission: coretuff.teleportation.tpunignore
+
+permissions:
+
+  coretuff:
+    default: op
+    children:
+      coretuff.dump: true
+      coretuff.admin.dump: true
+
+  coretuff.reload:
+    default: op
+
+  coretuff.dump:
+    default: op
+
+  coretuff.admin.dump:
+    default: op
+
+  # Moderation
+
+  coretuff.moderation:
+    default: op
+    children:
+      coretuff.moderation.ban: true
+      coretuff.moderation.tempban: true
+      coretuff.moderation.banip: true
+      coretuff.moderation.pardon: true
+      coretuff.moderation.kick: true
+      coretuff.moderation.warn: true
+      coretuff.moderation.pid: true
+      coretuff.moderation.jail: true
+
+  coretuff.moderation.ban:
+    default: op
+
+  coretuff.moderation.tempban:
+    default: op
+
+  coretuff.moderation.banip:
+    default: op
+
+  coretuff.moderation.pardon:
+    default: op
+
+  coretuff.moderation.kick:
+    default: op
+
+  coretuff.moderation.warn:
+    default: op
+
+  coretuff.moderation.pid:
+    default: op
+
+  # Gamemode
+
+  coretuff.gamemode:
+    default: op
+    children:
+      coretuff.gamemode.gmc: true
+      coretuff.gamemode.gmc.others: true
+      coretuff.gamemode.gms: true
+      coretuff.gamemode.gms.others: true
+      coretuff.gamemode.gma: true
+      coretuff.gamemode.gma.others: true
+      coretuff.gamemode.gmsp: true
+      coretuff.gamemode.gmsp.others: true
+
+  coretuff.gamemode.gmc:
+    default: op
+
+  coretuff.gamemode.gmc.others:
+    default: op
+
+  coretuff.gamemode.gms:
+    default: op
+
+  coretuff.gamemode.gms.others:
+    default: op
+
+  coretuff.gamemode.gma:
+    default: op
+
+  coretuff.gamemode.gma.others:
+    default: op
+
+  coretuff.gamemode.gmsp:
+    default: op
+
+  coretuff.gamemode.gmsp.others:
+    default: op
+
+  # Utility
+
+  coretuff.utility:
+    default: op
+    children:
+      coretuff.utility.fly: true
+      coretuff.utility.heal: true
+      coretuff.utility.heal.others: true
+      coretuff.utility.feed: true
+      coretuff.utility.feed.others: true
+      coretuff.utility.hat: true
+      coretuff.utility.craftingtable: true
+      coretuff.utility.anvil: true
+      coretuff.utility.stonecutter: true
+      coretuff.utility.smithingtable: true
+      coretuff.utility.loom: true
+      coretuff.utility.cartographytable: true
+      coretuff.utility.enchantingtable: true
+      coretuff.utility.grindstone: true
+      coretuff.utility.kit: true
+
+
+
+  coretuff.utility.fly:
+    default: op
+
+  coretuff.utility.heal:
+    default: op
+
+  coretuff.utility.heal.others:
+    default: op
+
+  coretuff.utility.feed:
+    default: op
+
+  coretuff.utility.feed.others:
+    default: op
+
+  coretuff.utility.hat:
+    default: op
+
+  coretuff.utility.craftingtable:
+    default: op
+
+  coretuff.utility.anvil:
+    default: op
+
+  coretuff.utility.stonecutter:
+    default: op
+
+  coretuff.utility.smithingtable:
+    default: op
+
+  coretuff.utility.loom:
+    default: op
+
+  coretuff.utility.cartographytable:
+    default: op
+
+  coretuff.utility.enchantingtable:
+    default: op
+
+  coretuff.utility.grindstone:
+    default: op
+
+  # Teleportation
+
+  coretuff.teleportation:
+    default: op
+    children:
+      coretuff.teleportation.tpask: true
+      coretuff.teleportation.tphere: true
+      coretuff.teleportation.tpaccept: true
+      coretuff.teleportation.tpdeny: true
+      coretuff.teleportation.rtp: true
+      coretuff.teleportation.rtp.*: true
+      coretuff.teleportation.back: true
+      coretuff.teleportation.tpignore: true
+      coretuff.teleportation.tpunignore: true
+
+  coretuff.teleportation.tpask:
+    default: op
+
+  coretuff.teleportation.tphere:
+    default: op
+
+  coretuff.teleportation.tpaccept:
+    default: op
+
+  coretuff.teleportation.tpdeny:
+    default: op
+
+  coretuff.teleportation.rtp:
+    default: op
+
+  coretuff.teleportation.rtp.*:
+    default: op
+
+  coretuff.teleportation.back:
+    default: op
+
+  coretuff.teleportation.tpignore:
+    default: op
+
+  coretuff.teleportation.tpunignore:
+    default: op
+
+  coretuff.land:
+   default: op
+   children:
+     coretuff.land.home: true
+     coretuff.land.sethome: true
+     coretuff.land.delhome: true
+     coretuff.land.warps: true
+
+  coretuff.land.home:
+    default: op
+
+  coretuff.land.sethome:
+    default: op
+
+  coretuff.land.delhome:
+    default: op
+
+  coretuff.land.warps:
+    default: op
+    children:
+      coretuff.land.warps.warp: true
+      coretuff.land.warps.setwarp: true
+      coretuff.land.warps.delwarp: true
+      coretuff.land.warps.list: true
+      coretuff.land.warps.warp.others: true
+      coretuff.land.warps.bypass-cost: true
+
+  coretuff.economy:
+    default: op
+    children:
+      coretuff.economy.balance: true
+      coretuff.economy.balance.others: true
+      coretuff.economy.pay: true
+      coretuff.economy.admin: true
+      coretuff.economy.bypass-tax: true
+      coretuff.economy.bypass-interest: true
+
+  coretuff.economy.balance:
+    default: op
+
+  coretuff.economy.balance.others:
+    default: op
+
+  coretuff.economy.pay:
+    default: op
+  coretuff.economy.admin:
+    default: op
+
+  coretuff.economy.bypass-tax:
+    default: op
+
+  coretuff.economy.bypass-interest:
+    default: op
+
+  # Jail
+
+  coretuff.moderation.jail:
+    default: op
+    children:
+      coretuff.moderation.jail.jail: true
+      coretuff.moderation.jail.jail.others: true
+      coretuff.moderation.jail.setjail: true
+      coretuff.moderation.jail.deljail: true
+      coretuff.moderation.jail.list: true
+
+  coretuff.moderation.jail.jail:
+    default: op
+
+  coretuff.moderation.jail.jail.others:
+    default: op
+
+  coretuff.moderation.jail.setjail:
+    default: op
+
+  coretuff.moderation.jail.deljail:
+    default: op
+
+  coretuff.moderation.jail.list:
+    default: op
+
+  # Kits
+
+  coretuff.utility.kit:
+    default: op
+    children:
+      coretuff.utility.kit.list: true
+      coretuff.utility.kit.others: true
+
+  coretuff.utility.kit.list:
+    default: op
+
+  coretuff.utility.kit.others:
+    default: op

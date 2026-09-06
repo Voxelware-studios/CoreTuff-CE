@@ -1,0 +1,447 @@
+# ============================================================
+# CoreTuff Community Edition
+# Configuration
+# ============================================================
+#
+# Plugin data:
+#   plugins/CoreTuff CE/
+#
+# Database:
+#   plugins/CoreTuff CE/database.mv.db
+#
+# Diagnostic dumps:
+#   plugins/CoreTuff CE/dumps/
+#
+# ============================================================
+
+
+# ============================================================
+# CORE
+# ============================================================
+
+core:
+  # General CoreTuff settings.
+  #
+  # The message prefix is intentionally NOT configurable.
+  # CoreTuff always uses:
+  # [CoreTuff]
+
+  messages:
+    nopermission: "&cYou don't have permission to do that."
+
+
+# ============================================================
+# TELEPORTATION
+# ============================================================
+
+Teleportation:
+
+  # Teleport request expiration time in seconds.
+  tpExpire: 60
+
+  # Teleport cooldowns in seconds.
+  tpCooldown: 30
+  rtpCooldown: 60
+  backCooldown: 30
+
+  # Teleport request messages.
+  tpSelf: "&cYou cannot send a teleport request to yourself."
+  playerIgnore: "&cThis player is ignoring teleport requests from you."
+
+  tpNoPendingReq: "&cYou don't have a pending teleport request."
+  tpReqExpired: "&cThe teleport request has expired."
+  tpNoReqDeny: "&cYou don't have a teleport request to deny."
+
+  tpReqDenied: "&cYour teleport request was denied."
+  tpDenied: "&cYou denied the teleport request."
+
+  backNoPrevLocation: "&cYou don't have a previous location to return to."
+
+  # TPA/Tphere request messages.
+  #
+  # These are lists because the code reads them using getStringList().
+  tpasktargetMessage:
+    - "&e{player} &7has requested to teleport to you."
+    - "&7Use &a/tpaccept &7to accept or &c/tpdeny &7to deny."
+    - "&7Request expires in &f{time}&7 seconds."
+
+  tpheretargetMessage:
+    - "&e{player} &7has requested you to teleport to them."
+    - "&7Use &a/tpaccept &7to accept or &c/tpdeny &7to deny."
+    - "&7Request expires in &f{tim&7 seconds."
+
+  tpsenderMessage:
+    - "&aTeleport request sent to &f{player}&a."
+
+  # Ignore system.
+  ignoreYourself: "&cYou cannot ignore yourself."
+  alreadlyIgnoring: "&cYou are already ignoring this player."
+  ignoreAdd: "&aYou are now ignoring teleport requests from &f{player}&a."
+  ignoreRevoke: "&aYou are no longer ignoring teleport requests from &f{player}&a."
+  notIgnoring: "&cYou are not ignoring this player."
+
+  # Cooldown.
+  backOnCooldown: "&cYou must wait before using /back again."
+
+  # Teleport cancellation.
+  tpCancMoved: "&cTeleport cancelled because you moved."
+  tpCancDamage: "&cTeleport cancelled because you took damage."
+
+  # Countdown.
+  tpCountMove: "&eTeleporting in &f{time}&e..."
+  tpCountdown: "&e{time}"
+
+  # Random teleport.
+  rtpOnCooldown: "&cRandom teleport is on cooldown."
+  rtpLocSearch: "&eSearching for a safe location..."
+  rtpNoSafeLoc: "&cCould not find a safe random teleport location."
+  rtpTeleportFailed: "&cRandom teleport failed."
+  rtpTeleported: "&aTeleported to a random location."
+
+  # Whether RTP may generate/load chunks while searching.
+  rtpGeneratedChunksOnly: false
+
+
+# ============================================================
+# LAND / HOMES / WARPS
+# ============================================================
+
+lands:
+
+  homes:
+
+    # Delay before teleporting home.
+    teleport-delay-seconds: 3
+
+    # Default number of homes a player can have.
+    max-homes-default: 1
+
+    # Permission base for additional home limits.
+    #
+    # Example:
+    # coretuff.land.sethome.5
+    #
+    max-homes-permission-base: "coretuff.land.sethome."
+
+  warps:
+
+    # Delay before teleporting to a warp.
+    teleport-delay-seconds: 3
+
+    # Economy cost to use a warp.
+    # 0.0 = free.
+    economy-cost: 0.0
+
+    # Permission which bypasses the warp cost.
+    economy-cost-permission-bypass: "coretuff.land.warps.bypass-cost"
+
+    # Permission base for additional warp limits.
+    #
+    # Example:
+    # coretuff.land.warps.setwarp.10
+    #
+    max-warps-permission-base: "coretuff.land.warps.setwarp."
+
+
+# ============================================================
+# ECONOMY
+# ============================================================
+
+economy:
+
+  currency:
+
+    name: "Dollar"
+    name-plural: "Dollars"
+    symbol: "$"
+
+    # Number of decimal places shown by the formatter.
+    decimal-places: 2
+
+  defaults:
+
+    # Starting balance for new players.
+    starting-balance: 0.0
+
+    # Maximum balance a player can have.
+    max-balance: 999999999.99
+
+  transactions:
+
+    # Tax percentage applied to /pay.
+    #
+    # 0.0 = no tax.
+    pay-tax-percent: 0.0
+
+    # Minimum amount that can be transferred.
+    minimum-transfer: 0.01
+
+    # Permission that bypasses transaction tax.
+    pay-tax-bypass-permission: "coretuff.economy.bypass-tax"
+
+  interest:
+
+    # Enable automatic interest.
+    enabled: false
+
+    # Interest percentage.
+    rate-percent: 0.5
+
+    # How often interest is applied.
+    interval-hours: 24
+
+    # Maximum balance eligible for interest.
+    max-balance: 100000.0
+
+    # Permission that bypasses interest restrictions.
+    interest-bypass-permission: "coretuff.economy.bypass-interest"
+
+
+# ============================================================
+# MODERATION
+# ============================================================
+
+moderation:
+
+  # ----------------------------------------------------------
+  # Jail
+  # ----------------------------------------------------------
+
+  jail:
+
+    teleport-delay-seconds: 3
+
+    # Whether a jailed player is released when they logout.
+    release-on-logout: true
+
+    messages:
+
+      jailed: "&cYou have been jailed in &f{jail}&c."
+      released: "&aYou have been released from jail."
+      login-jailed: "&cYou are currently jailed."
+
+      usage-jail: "&cUsage: /jail <name> [player]"
+      usage-setjail: "&cUsage: /setjail <name>"
+      usage-deljail: "&cUsage: /deljail <name>"
+
+      no-jail-exists: "&cJail &f{jail} &cdoes not exist."
+      already-jailed: "&c{player} is already jailed."
+
+      jail-set: "&aJail &f{jail} &aset."
+      jail-deleted: "&cJail &f{jail} &cdeleted."
+
+      jails-none: "&cNo jails exist."
+      jail-list-header: "&6Jails:"
+      jail-list-entry: "&8- &f{name}"
+
+
+  # ----------------------------------------------------------
+  # Warning system
+  # ----------------------------------------------------------
+
+  warn-points:
+
+    low: 1
+    medium: 2
+    high: 3
+
+
+  # ----------------------------------------------------------
+  # Warning decay
+  # ----------------------------------------------------------
+
+  warn-decay:
+
+    # Amount of warning points removed per decay interval.
+    amount: 1
+
+    # Decay interval.
+    #
+    # Use the format expected by the existing WarnService.
+    interval: "7d"
+
+
+  # ----------------------------------------------------------
+  # Automatic punishments
+  # ----------------------------------------------------------
+
+  auto-punishments:
+
+    # Warning points required for automatic temporary ban.
+    tempban-points: 5
+
+    # Warning points required for automatic permanent ban.
+    ban-points: 10
+
+    # Reason used for automatic temporary bans.
+    tempban-reason: "Reached the automatic temporary-ban warning threshold."
+
+    # Reason used for automatic permanent bans.
+    ban-reason: "Reached the automatic permanent-ban warning threshold."
+
+    # Duration of automatic temporary ban.
+    tempban-duration: "1d"
+
+
+  # ----------------------------------------------------------
+  # Commands
+  # ----------------------------------------------------------
+
+  commands:
+
+    pardon:
+
+      default-reason: "Pardoned by staff."
+
+
+    pid:
+
+      status-active: "&aActive"
+      status-pardoned: "&7Pardoned"
+
+
+  # ----------------------------------------------------------
+  # Ban screen
+  # ----------------------------------------------------------
+
+  ban-screen:
+
+    disconnect: "&cYou have been banned from this server."
+    reason-label: "&cReason"
+    duration-label: "&cDuration"
+    expires-label: "&cExpires"
+    remaining-label: "&cRemaining"
+    moderator-label: "&cModerator"
+    ban-id-label: "&cBan ID"
+    appeal-label: "&cAppeal"
+    appeal-text: "&7Contact the server staff if you believe this punishment was issued incorrectly."
+    permanent-text: "Permanent"
+
+
+  # ----------------------------------------------------------
+  # Bedrock / Floodgate ban screen
+  # ----------------------------------------------------------
+
+  bedrock-ban-screen:
+
+    disconnect: "&cYou have been banned from this server."
+    reason-label: "&cReason"
+    id-label: "&cBan ID"
+
+
+# ============================================================
+# KITS
+# ============================================================
+
+kits:
+
+  # Delay before kit teleport, in seconds.
+  kit-teleport-delay-seconds: 0
+
+  # Default cooldown for kits.
+  default-cooldown-seconds: 0
+
+  # Kit definitions.
+  #
+  # Each kit can contain:
+  #
+  # display-name:
+  # permission:
+  # cooldown-seconds:
+  # items:
+  #
+  kits:
+
+    starter:
+
+      display-name: "&aStarter"
+
+      permission: "coretuff.utility.kit.starter"
+
+      cooldown-seconds: 86400
+
+      items:
+        - "STONE_SWORD:1"
+        - "STONE_PICKAXE:1"
+        - "BREAD:16"
+
+
+# ============================================================
+# GAMEMODE SHORTCUTS
+# ============================================================
+
+Gamemode_Shorthand:
+
+  creative: "&aYour gamemode has been changed to Creative."
+  survival: "&aYour gamemode has been changed to Survival."
+  adventure: "&aYour gamemode has been changed to Adventure."
+  spectator: "&aYour gamemode has been changed to Spectator."
+
+  gamemodeSet: "&aSet &f{player}&a's gamemode to &f{gamemode}&a."
+
+  gamemodeChange: "&aYour gamemode has been changed to &f{gamemode}&a."
+
+
+# ============================================================
+# PLAYER / GENERAL MESSAGES
+# ============================================================
+
+playerOffline: "&cPlayer not found or offline."
+
+cmdUse1: "&cUsage: /{command}"
+
+
+# ============================================================
+# FLY
+# ============================================================
+
+Fly:
+
+  # Cooldown in minutes.
+  flycooldown: 0
+
+  # Flight duration in minutes.
+  #
+  # 0 may represent unlimited depending on the command logic.
+  flyduration: 0
+
+  cooldown: "&cYou must wait before using /fly again."
+
+  infly: "&aYou are already flying."
+
+  flyenable: "&aFlight enabled for &f{time}&a minutes."
+
+  flyexpire: "&cYour flight time has expired."
+
+
+# ============================================================
+# HEAL
+# ============================================================
+
+Heal:
+
+  healed: "&aYou have been healed."
+
+  healedOther: "&aHealed &f{player}&a."
+
+  healedTarget: "&aYou have been healed by &f{player}&a."
+
+
+# ============================================================
+# FEED
+# ============================================================
+
+Feed:
+
+  filled: "&aYour hunger has been restored."
+
+  feedOther: "&aFed &f{player}&a."
+
+  feedTarget: "&aYour hunger has been restored by &f{player}&a."
+
+
+# ============================================================
+# CONFIGURATION
+# ============================================================
+
+config-version: 1

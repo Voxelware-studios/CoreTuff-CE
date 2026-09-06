@@ -1,0 +1,71 @@
+VOXELWARE COMMUNITY LICENSE (VCL)
+Version 1.0
+
+Copyright (c) 2024-2026 Voxelware Studios. All rights reserved.
+
+This software is licensed under the Voxelware Community License (VCL) Version 1.0.
+
+The VCL is a source-available proprietary license. This software is NOT
+distributed under an OSI-approved open source license.
+
+TERMS AND CONDITIONS:
+
+1. GRANT OF LICENSE
+   Subject to the terms and conditions of this License, Voxelware Studios
+   grants you a non-exclusive, worldwide, royalty-free license to use,
+   modify, and distribute this software and its source code, solely as
+   incorporated into or combined with your own software products.
+
+2. ATTRIBUTION
+   All copies, modifications, and derivative works of this software must
+   retain the original copyright notice, this license text, and all
+   attribution notices as they appear in the original source code.
+
+3. REDISTRIBUTION
+   If you redistribute this software (modified or unmodified) as a
+   standalone product or as part of a larger distribution, you must:
+   a) Include the complete VCL license text
+   b) Retain all copyright notices and attribution
+   c) Provide access to the corresponding source code via a public
+      repository or other publicly accessible means
+   d) Clearly identify the software as a derivative of CoreTuff
+   e) Preserve the package namespace (org.voxelware.coretuff)
+
+4. SAME-LICENSE REQUIREMENT
+   Derivative works must be distributed under the same VCL license.
+   You may not distribute derivative works under a different license
+   unless separately authorized in writing by Voxelware Studios.
+
+5. COMMERCIAL MONETIZATION
+   Permission is granted to commercially monetize derivative works,
+   including but not limited to selling, subscription, or service-based
+   models, subject to compliance with all other terms of this license.
+
+6. TRADEMARKS AND NAMESPACES
+   The "CoreTuff" name and "Voxelware" name are trademarks of Voxelware
+   Studios. The package namespace (org.voxelware.coretuff) must be
+   preserved in derivative works. You may not use the CoreTuff or
+   Voxelware trademarks to endorse or promote your derivative works
+   without express written permission.
+
+7. DISCLAIMER OF WARRANTIES
+   THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
+   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+   IN NO EVENT SHALL VOXELWARE STUDIOS BE LIABLE FOR ANY CLAIM, DAMAGES,
+   OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
+   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+8. TERMINATION
+   This license terminates automatically if you fail to comply with any
+   of its terms. Upon termination, you must cease all use and
+   distribution of the software and destroy all copies.
+
+9. ENTIRE AGREEMENT
+   This License constitutes the entire agreement between the parties
+   with respect to the subject matter hereof and supersedes all prior
+   agreements and understandings.
+
+For the full legal text, contact Voxelware Studios or visit:
+https://voxelware.org/licenses/vcl
