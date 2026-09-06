@@ -48,10 +48,15 @@ import org.voxelware.coretuff.Features.Teleportation.Listener.DeathListener;
 import org.voxelware.coretuff.Features.Teleportation.Listener.TeleportCancelListener;
 import org.voxelware.coretuff.Features.Teleportation.TeleportConfig;
 import org.voxelware.coretuff.Features.Utility.UtilityConfig;
+import org.voxelware.coretuff.Features.Utility.commandShorthand.dayCommand;
 import org.voxelware.coretuff.Features.Utility.commandShorthand.gmaCommand;
 import org.voxelware.coretuff.Features.Utility.commandShorthand.gmcCommand;
 import org.voxelware.coretuff.Features.Utility.commandShorthand.gmsCommand;
 import org.voxelware.coretuff.Features.Utility.commandShorthand.gmspCommand;
+import org.voxelware.coretuff.Features.Utility.commandShorthand.midnightCommand;
+import org.voxelware.coretuff.Features.Utility.commandShorthand.nightCommand;
+import org.voxelware.coretuff.Features.Utility.commandShorthand.noonCommand;
+import org.voxelware.coretuff.Features.Utility.commandShorthand.sunsetCommand;
 import org.voxelware.coretuff.Features.Utility.miscellaneous.*;
 import org.voxelware.coretuff.Features.Moderation.Commands.*;
 import org.voxelware.coretuff.Features.Moderation.ConfigEngine.ModConfig;
@@ -354,6 +359,11 @@ public final class CoreTuff extends JavaPlugin {
 		registerCommand("gma", new gmaCommand(this));
 		registerCommand("gmsp", new gmspCommand(this));
 		registerCommand("gms", new gmsCommand(this));
+		registerCommand("day", new dayCommand(this));
+		registerCommand("noon", new noonCommand(this));
+		registerCommand("sunset", new sunsetCommand(this));
+		registerCommand("night", new nightCommand(this));
+		registerCommand("midnight", new midnightCommand(this));
 		registerCommand("feed", new hungerCommand(this));
 		registerCommand("heal", new healCommand(this));
 		registerCommand("fly", new flyCommand(this));
@@ -509,8 +519,8 @@ public final class CoreTuff extends JavaPlugin {
 	private void initMetrics() {
 		try {
 			new Metrics(this, 33882);
-		} catch (Exception e) {
-			getLogger().warning("Failed to initialize bStats metrics: " + e.getMessage());
+		} catch (Throwable t) {
+			getLogger().warning("Failed to initialize bStats metrics: " + t.getMessage());
 		}
 	}
 

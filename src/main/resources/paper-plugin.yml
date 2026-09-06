@@ -139,23 +139,23 @@ commands:
 
   day:
     description: Set time to day
-    usage: "/day"
+    usage: "/day [world]"
     permission: coretuff.time.day
   noon:
     description: Set time to noon
-    usage: "/noon"
+    usage: "/noon [world]"
     permission: coretuff.time.noon
   sunset:
     description: Set time to sunset
-    usage: "/sunset"
+    usage: "/sunset [world]"
     permission: coretuff.time.sunset
   night:
     description: Set time to night
-    usage: "/night"
+    usage: "/night [world]"
     permission: coretuff.time.night
   midnight:
     description: Set time to midnight
-    usage: "/midnight"
+    usage: "/midnight [world]"
     permission: coretuff.time.midnight
 
   # Utility
@@ -418,6 +418,9 @@ permissions:
     default: op
 
   coretuff.time.noon:
+    default: op
+
+  coretuff.time.sunset:
     default: op
 
   coretuff.time.night:
