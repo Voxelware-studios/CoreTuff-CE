@@ -56,7 +56,10 @@ public class WarpCommand extends PlayerCommand {
                 return true;
             }
 
-            if (!warpService.chargeWarpCost(player)) {
+            double cost = warpService.config().warpCost();
+            boolean freeWarp = cost <= 0 || player.hasPermission(warpService.config().warpCostBypassPermission());
+
+            if (!freeWarp && !warpService.hasSufficientBalance(player)) {
                 String costStr = warpService.warpCostFormatted();
                 player.sendMessage(warpService.plugin().format(player, "&cYou need " + (costStr != null ? costStr : "funds") + " to use this warp.", null));
                 return true;
@@ -69,6 +72,9 @@ public class WarpCommand extends PlayerCommand {
             CoreTuffProvider.getDelayedTeleporter().teleport(finalTarget, location, delay)
                     .whenComplete((success, throwable) -> {
                         if (Boolean.TRUE.equals(success)) {
+                            if (!freeWarp) {
+                                warpService.chargeWarpCost(player);
+                            }
                             finalTarget.sendMessage(plugin.format(finalTarget, "&aTeleported to warp &f" + warp.getName() + "&a.", null));
                             if (!finalPlayer.equals(finalTarget)) {
                                 finalPlayer.sendMessage(plugin.format(finalPlayer, "&aTeleported &f" + finalTarget.getName() + " &ato warp &f" + warp.getName() + "&a.", null));

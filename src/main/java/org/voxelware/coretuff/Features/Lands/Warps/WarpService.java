@@ -79,15 +79,25 @@ public class WarpService {
         return player.hasPermission(config.warpSetPermission()) ? 1 : 0;
     }
 
+    public boolean hasSufficientBalance(Player player) {
+        if (economyService == null) return true;
+        double cost = config.warpCost();
+        if (cost <= 0) return true;
+        if (player.hasPermission(config.warpCostBypassPermission())) return true;
+        try {
+            double balance = economyService.getBalance(player.getUniqueId());
+            return balance >= cost;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
     public boolean chargeWarpCost(Player player) {
         if (economyService == null) return true;
         double cost = config.warpCost();
         if (cost <= 0) return true;
         if (player.hasPermission(config.warpCostBypassPermission())) return true;
-
         try {
-            double balance = economyService.getBalance(player.getUniqueId());
-            if (balance < cost) return false;
             economyService.withdraw(player.getUniqueId(), cost);
             return true;
         } catch (Exception e) {

@@ -165,6 +165,7 @@ public final class CoreTuff extends JavaPlugin {
 		this.exceptionBuffer = new ExceptionRingBuffer();
 
 		saveDefaultConfig();
+		ConfigVersionUpdater.checkAndUpdate(this);
 		reloadConfig();
 
 		logStartup(Bukkit.getConsoleSender(), isFolia());
