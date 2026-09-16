@@ -381,6 +381,21 @@ Gamemode_Shorthand:
 
   gamemodeChange: "&aYour gamemode has been changed to &f{gamemode}&a."
 
+# ============================================================
+# TIME SHORTCUTS
+# ============================================================
+
+Time_Shorthand:
+
+  day: "&aTime set to Day."
+  noon: "&aTime set to Noon."
+  sunset: "&aTime set to Sunset."
+  night: "&aTime set to Night."
+  midnight: "&aTime set to Midnight."
+
+  timeSet: "&aSet &f{player}&a's time to &f{time}&a."
+
+  timeChange: "&aYour time has been changed to &f{time}&a."
 
 # ============================================================
 # PLAYER / GENERAL MESSAGES
@@ -444,4 +459,4 @@ Feed:
 # CONFIGURATION
 # ============================================================
 
-config-version: 1
+config-version: 1.1
