@@ -50,39 +50,31 @@ java {
 }
 
 tasks {
+    jar {
+        archiveClassifier.set("unshaded")
+    }
+
+    shadowJar {
+        archiveClassifier.set("")
+        relocate("org.bstats", "org.voxelware.coretuff.libs.bstats")
+    }
+
     build {
         dependsOn(shadowJar)
     }
+
     runServer {
         minecraftVersion("26.1.2")
         jvmArgs("-Xms2G", "-Xmx2G")
+        pluginJars(shadowJar.flatMap { it.archiveFile })
     }
 
     processResources {
-        val props = mapOf("version" to version)
+        val props = mapOf("version" to project.version)
+        inputs.properties(props)
+        filteringCharset = "UTF-8"
         filesMatching("paper-plugin.yml") {
             expand(props)
         }
     }
-}
-tasks.processResources {
-
-    val props =
-        mapOf(
-            "version" to project.version
-        )
-
-    inputs.properties(props)
-
-    filteringCharset = "UTF-8"
-
-    filesMatching("paper-plugin.yml") {
-
-        expand(props)
-    }
-}
-
-tasks.shadowJar {
-
-    relocate("org.bstats", "org.voxelware.coretuff.libs.bstats")
 }
