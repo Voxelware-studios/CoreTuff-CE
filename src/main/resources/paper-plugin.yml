@@ -1,7 +1,7 @@
 name: CoreTuff-CE
 version: ${version}
 main: org.voxelware.coretuff.CoreTuff
-api-version: '26.2'
+api-version: '26.3'
 authors: [Voxelware Studios]
 website: https://voxelware.org/
 
